@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_invoice_form_with_fecha_pago" model="ir.ui.view">
+        <field name="name">account.move.form.with.fecha.pago</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Añadir campo después de la fecha de factura -->
+            <xpath expr="//field[@name='invoice_date']/.." position="after">
+                <field name="fecha_pago" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_invoice_tree_with_fecha_pago" model="ir.ui.view">
+        <field name="name">account.move.tree.with.fecha.pago</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <!-- Añadir campo en vista lista -->
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="fecha_pago"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
